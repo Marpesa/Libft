@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:02:36 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/25 16:56:39 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/26 15:45:13 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,17 @@ int	ft_atoi(char *a)
 	}
 	r = r * n;
 	return (r);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int	main()
+{
+	char	*s = "4655555554354";
+	char	*s1 = "464354";
+
+	printf("%d \n", ft_atoi(s));
+	printf("%d", atoi(s));
+	return(0);
 }

@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 17:07:02 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/26 16:56:12 by lmery            ###   ########.fr       */
+/*   Created: 2021/11/26 11:51:39 by lmery             #+#    #+#             */
+/*   Updated: 2021/11/26 16:52:49 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+void	*ft_memmove(void *dst, const void *src, int n)
 {
-	int			i;
-	unsigned const char	*a;
-	unsigned char		*b;
+	int	i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (dst == NULL && src == NULL)
-		return (0);
-	a = (unsigned char *)src;
-	b = (unsigned char *)dst;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
 	i = 0;
-	while (i < n)
+	if (dst == 0 && src == 0)
+		return (0);
+	if (s < d)
 	{
-		((char *)b)[i] = ((char *)a)[i];
-		i++;
+		while (i < n)
+		{
+			d[n - i - 1] = s[n - i - 1];
+			i++;
+		}
 	}
+	else
+		ft_memcpy(d, s, n);
 	return (dst);
 }
