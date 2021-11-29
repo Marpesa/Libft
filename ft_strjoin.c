@@ -1,39 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 10:23:06 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 15:10:03 by lmery            ###   ########.fr       */
+/*   Created: 2021/11/29 10:40:05 by lmery             #+#    #+#             */
+/*   Updated: 2021/11/29 11:24:16 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *s, const char *w, int n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int	i;
 	int	j;
+	char	*d;
 
 	i = 0;
 	j = 0;
-	if (!w || w[j] == 0)
-		return ((char *)&s[i]);
-	while (s[i] && i < n && w[j])
+	while (s1[i])
+		i++;
+	while (s2[j])
+		j++;
+	d = (char *)malloc(sizeof(char) * (i + j + 1));
+	if (d == 0)
+		return (0);
+	i = -1;
+	while (s1[++i])
+		d[i] = s1[i];
+	j = 0;
+	while (s2[j])
 	{
-		while (s[i] != w[j] && s[i] && i < n)
-			i++;
-		while (s[i] == w[j] && s[i] && i < n)
-		{
-			i++;
-			j++;
-		}
-		if (w[j] != '\0')
-			j = 0;
+		d[i] = s2[j];
+		i++;
+		j++;
 	}
-	if (w[j] == '\0')
-		return ((char *)&s[i - j]);
+	d[i] = '\0';
+	return (d);
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	char const	*s1 = "cochon";
+	char const	*s2 = "-dinde";
+
+	printf("%s", ft_strjoin (s1, s2));
 	return (0);
 }

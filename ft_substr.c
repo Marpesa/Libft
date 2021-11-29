@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 10:23:06 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 15:10:03 by lmery            ###   ########.fr       */
+/*   Created: 2021/11/29 09:53:36 by lmery             #+#    #+#             */
+/*   Updated: 2021/11/29 13:10:38 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *s, const char *w, int n)
+char	*ft_substr(char const *s, unsigned int i, int len)
 {
-	int	i;
 	int	j;
+	char	*d;
 
-	i = 0;
 	j = 0;
-	if (!w || w[j] == 0)
-		return ((char *)&s[i]);
-	while (s[i] && i < n && w[j])
+	d = (char *)malloc(sizeof(char) * (len + 1));
+	if (d == 0)
+		return (0);
+	while (s[i] && j < len)
 	{
-		while (s[i] != w[j] && s[i] && i < n)
-			i++;
-		while (s[i] == w[j] && s[i] && i < n)
-		{
-			i++;
-			j++;
-		}
-		if (w[j] != '\0')
-			j = 0;
+		d[j] = s[i];
+		i++;
+		j++;
 	}
-	if (w[j] == '\0')
-		return ((char *)&s[i - j]);
-	return (0);
+	d[j] = '\0';
+	return (d);
 }

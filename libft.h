@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:19:55 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/25 14:34:09 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/29 13:04:01 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,28 @@ int	ft_isascii(int c);
 int	ft_isprint(int c);
 int	ft_strlen(char *str);
 void	*ft_memset(void *s, int c, size_t n);
-
-
-
+void	ft_bzero(void *s, int n);
+void	*ft_memcpy(void *dst, const void *src, int n);
+void	*ft_memmove(void *dst, const void *src, int n);
 int	ft_strlcpy(char *dest, char *src, int size);
-
+int	ft_strlcat(char *dest, char *src, int size);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
-
+char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int	ft_strncmp(const char *s1, const char *s2, int n);
-
-
+void	*ft_memchr(const void *src, int c, int n);
+int	ft_memcmp(const void *s1, const void *s2, int n);
 char	*ft_strnstr(const char *s, const char *w, int n);
 int	ft_atoi(char *a);
 
 /**/
+void	*ft_calloc(int n, int s);
+char	*ft_strdup(const char *s);
 
-//calloc
-//strdup
+/**/
+char	*ft_substr(char const *s, unsigned int i, int len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
