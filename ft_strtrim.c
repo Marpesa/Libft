@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:32:08 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 15:00:12 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:13:16 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,9 @@ char	*ft_strnstr_r(const char *s, const char *w, int n)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
 	int	a;
 	int	b;
-	char	*d;
 
-	i = 0;
 	a = ft_strlen((char *)set);
 	b = ft_strlen((char *)s1);
 	if (set == 0)
@@ -61,16 +58,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(s1));
 	if ((ft_strnstr(s1, set, a) != 0) && (ft_strnstr_r(s1, set, a) == 0))
 		return (ft_substr(s1, a, (b - a)));
-	return (0);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	*S = "  Bonjour Monsieur B  ";
-	char	*set = " ";
-
-	printf ("%s", (char *)ft_strtrim(S, set));
 	return (0);
 }

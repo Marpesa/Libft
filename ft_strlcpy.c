@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:37:22 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/25 17:01:17 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/30 16:54:35 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	ft_strlcpy(char *dest, char *src, int size)
 		n++;
 	i = 0;
 	if (!dest || !src)
-		return(0);
-	if (size >0)
+		return (0);
+	if (size > 0)
 	{
-		while (i < size && src[i])
+		while (i < size - 1 && src[i])
 		{
 			dest[i] = src[i];
 			i++;

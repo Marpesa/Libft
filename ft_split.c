@@ -6,20 +6,20 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:11:12 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 18:14:15 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:13:48 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char const *s)
+int	ft_nstrlen(char const *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 		i++;
-	return (s[i]);
+	return (i);
 }
 
 int	ft_c_num(char const *s, char c)
@@ -31,63 +31,79 @@ int	ft_c_num(char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
+		if (s[i] == c)
+			n++;
+		i++;
+	}
+	return (n);
+}
+
+int	ft_s_num(char const *s, char c)
+{
+	int	i;
+	int	n;
+
+	n = 0;
+	i = 0;
+	if (s[0] != c)
+	{
+		n++;
+		i++;
+	}
+	while (s[i])
+	{
 		if (s[i] == c && s[i + 1] != c)
 		{
-			i++;
 			n++;
+			i++;
 		}
 		if (s[i] == c && s[i + 1] == c)
 			i++;
+		i++;
 	}
+	if (s[i] == c)
+		n--;
 	return (n);
 }
 
 int	ft_count(char const *s, int i, char c)
 {
-	int	C;
+	int	n;
 
-	C = 0;
-	while (s[i])
+	n = 0;
+	while (s[i] != c)
 	{
-		while (s[i] == c)
-		{
-			C++;
-			i++;
-		}
-		while (s[i] != c)
-			i++;
+		i++;
+		n++;
 	}
-	return (C);
+	return (n);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**a;
 	int	i;
-	int	j;
 	int	k;
 
 	i = 0;
 	k = 0;
-	a = malloc(sizeof(char) * 
-			while (s[i])
-			{
-			if (s[i] == c && s[i + 1] == c)
-			i++;
-			if (s[i] == c && s[i + 1] != c)
-			{
-			i++;
+	a = (char **)malloc(sizeof(char *) * (ft_s_num(s, c) + 1));
+	if (!a)
+		return (0);
+	if (s[0] != c)
+	{
+		a[k] = ft_substr(s, i, (ft_count(s, i, c)));
+		k++;
+	}
+	while (s[i] && k <= ft_s_num(s, c))
+	{
+		if (s[i] != c && s[i - 1] == c)
+		{
+			a[k] = ft_substr(s, i, ft_count(s, i, c));
 			k++;
-			a[k] = malloc(sizeof(char) * ft_count(s, i, c));
-			}
-			j = 0;
-			while (s[i] != c)
-			{
-			a[k][j] = s[i];
-			j++;
-			i++;
-			}
-			a[k][j] = 0;
-			}
-			return (a);
+		}
+		i++;
+	}
+	a[k] = '\0';
+	return (a);
 }

@@ -6,14 +6,17 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:19:55 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 13:04:01 by lmery            ###   ########.fr       */
+/*   Updated: 2021/11/30 17:17:20 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef FT_H
 # define FT_H
 
-# include <unistd.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <bsd/string.h>
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
@@ -45,5 +48,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int i, int len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
 
 #endif
