@@ -6,7 +6,7 @@
 #    By: lmery <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:17:55 by lmery             #+#    #+#              #
-#    Updated: 2021/11/30 15:07:25 by lmery            ###   ########.fr        #
+#    Updated: 2021/12/01 09:38:41 by lmery            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,33 +20,34 @@ AR = ar rc
 
 RM = rm -f
 
-FILES =		ft_isalpha \
-		ft_memset \
-		ft_bzero \
-		ft_memcpy \
-		ft_memmove \
-		ft_memchr \
-		ft_memcmp \
-		ft_strlen \
-		ft_strlcpy \
-		ft_strlcat \
-		ft_strchr \
-		ft_strrchr \
-		ft_strnstr \
-		ft_strncmp \
-		ft_atoi \
-		ft_isdigit \
-		ft_isalnum \
-		ft_isascii \
-		ft_isprint \
-		ft_toupper \
-		ft_tolower \
-		ft_calloc \
-		ft_strdup \
-		ft_substr \
-		ft_strjoin \
-		ft_strtrim \
-		ft_split \
+FILES =	ft_isalpha \
+	ft_memset \
+	ft_bzero \
+	ft_memcpy \
+	ft_memmove \
+	ft_memchr \
+	ft_memcmp \
+	ft_strlen \
+	ft_strlcpy \
+	ft_strlcat \
+	ft_strchr \
+	ft_strrchr \
+	ft_strnstr \
+	ft_strncmp \
+	ft_atoi \
+	ft_isdigit \
+	ft_isalnum \
+	ft_isascii \
+	ft_isprint \
+	ft_toupper \
+	ft_tolower \
+	ft_calloc \
+	ft_strdup \
+	ft_substr \
+	ft_strjoin \
+	ft_strtrim \
+	ft_split \
+	ft_itoa \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
@@ -68,7 +69,7 @@ bonus: $(OBJS_B)
 
 all: $(NAME)
 
-clean:
+clean: 
 	$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean

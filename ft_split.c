@@ -6,104 +6,113 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:11:12 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/30 15:13:48 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/01 15:20:06 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_nstrlen(char const *s)
+int	ft_sep(char a, char *charset)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_c_num(char const *s, char c)
-{
-	int	i;
-	int	n;
-
-	n = 0;
-	i = 0;
-	while (s[i])
+	while (charset[i])
 	{
-		if (s[i] == c)
-			n++;
+		if (charset[i] == a)
+			return (1);
 		i++;
 	}
-	return (n);
+	return (0);
 }
 
-int	ft_s_num(char const *s, char c)
+int	ft_count(const char *str, char *charset)
 {
 	int	i;
-	int	n;
+	int	count;
+	int	sep;
 
-	n = 0;
-	i = 0;
-	if (s[0] != c)
+	i = -1;
+	count = 0;
+	sep = 1;
+	while (str[++i])
 	{
-		n++;
-		i++;
-	}
-	while (s[i])
-	{
-		if (s[i] == c && s[i + 1] != c)
+		if (sep)
 		{
-			n++;
-			i++;
+			if (!ft_sep(str[i], charset))
+			{
+				sep = 0;
+				count++;
+			}
 		}
-		if (s[i] == c && s[i + 1] == c)
-			i++;
-		i++;
+		else
+			if (ft_sep(str[i], charset))
+				sep = 1;
 	}
-	if (s[i] == c)
-		n--;
-	return (n);
+	return (count);
 }
 
-int	ft_count(char const *s, int i, char c)
+int	*ft_words(const char *str, char *charset, int w)
 {
-	int	n;
+	int	*tab;
+	int	sep;
+	int	i;
+	int	j;
 
-	n = 0;
-	while (s[i] != c)
+	i = -1;
+	j = 0;
+	sep = 1;
+	tab = (int *)malloc(sizeof(*tab) * (2 * w));
+	if (!tab)
+		return (0);
+	while (str[++i])
 	{
-		i++;
-		n++;
+		if (sep && (ft_sep(str[i], charset)) == 0)
+			tab[(--sep) + (j++)] = i;
+		if (sep == 0 && (ft_sep(str[i], charset)))
+		{
+			sep = 1;
+			tab[j++] = i;
+		}
 	}
-	return (n);
+	if (j == 2 * w - 1)
+		tab[j] = i;
+	return (tab);
+}
+
+char	**ft_split_array(const char *str, char *charset)
+{
+	int		i;
+	int		j;
+	int		*words;
+	char	**dest;
+	int		size;
+
+	words = ft_words(str, charset, ft_count(str, charset));
+	i = 0;
+	dest = (char **)malloc(sizeof(*dest)
+			* (ft_count(str, charset) + 1));
+	if (!dest)
+		return (0);
+	while (i < ft_count(str, charset))
+	{
+		size = sizeof(**dest) * (words[2 * i + 1] - words[2 * i] + 1);
+		dest[i] = (char *)malloc(size);
+		j = words[2 * i] - 1;
+		while (++j < words[2 * i + 1])
+			dest[i][j - words[2 * i]] = str[j];
+		dest [i][j - words[2 * i]] = '\0';
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**a;
-	int	i;
-	int	k;
+	char	a[2];
 
-	i = 0;
-	k = 0;
-	a = (char **)malloc(sizeof(char *) * (ft_s_num(s, c) + 1));
-	if (!a)
-		return (0);
-	if (s[0] != c)
-	{
-		a[k] = ft_substr(s, i, (ft_count(s, i, c)));
-		k++;
-	}
-	while (s[i] && k <= ft_s_num(s, c))
-	{
-		if (s[i] != c && s[i - 1] == c)
-		{
-			a[k] = ft_substr(s, i, ft_count(s, i, c));
-			k++;
-		}
-		i++;
-	}
-	a[k] = '\0';
-	return (a);
+	a[0] = c;
+	a[1] = '\0';
+	return (ft_split_array(s, a));
 }

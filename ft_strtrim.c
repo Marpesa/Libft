@@ -6,57 +6,26 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:32:08 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/30 15:13:16 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/01 15:46:44 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-char	*ft_strnstr_r(const char *s, const char *w, int n)
+char	*ft_strtrim(char const *s, char const *set)
 {
-	int	i;
-	int	j;
-	int	m;
+	int		len;
+	char	*d;
 
-	i = ft_strlen((char *)s);
-	j = ft_strlen((char *)w);
-	m = ft_strlen((char *)s) - n;
-	if (j == 1 && w[j - 1] != s[i - 1])
-		return (0);
-	while (i > 0 && i > m && j > 0)
-	{
-		while (s[i] != w[j] && i > 0 && i > m)
-			i--;
-		while (s[i] == w[j] && i > 0 && i > m)
-		{
-			i--;
-			j--;
-		}
-		if (j != 0)
-			j = ft_strlen((char *)w);
-	}
-	if (j == 0)
-		return ((char *)&s[i]);
-	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int	a;
-	int	b;
-
-	a = ft_strlen((char *)set);
-	b = ft_strlen((char *)s1);
-	if (set == 0)
-		return (ft_strdup(s1));
-	if ((ft_strnstr(s1, set, a) != 0) && (ft_strnstr_r(s1, set, a) != 0))
-		return (ft_substr(s1, a, (b - (2 * a))));
-	if ((ft_strnstr(s1, set, a) == 0) && (ft_strnstr_r(s1, set, a) != 0))
-		return (ft_substr(s1, 0, (b - a)));
-	if ((ft_strnstr(s1, set, a) == 0) && (ft_strnstr_r(s1, set, a) == 0))
-		return (ft_strdup(s1));
-	if ((ft_strnstr(s1, set, a) != 0) && (ft_strnstr_r(s1, set, a) == 0))
-		return (ft_substr(s1, a, (b - a)));
-	return (0);
+	if (!s || !set)
+		return (NULL);
+	while (*s && ft_strchr(set, *s))
+		s++;
+	len = ft_strlen((char *)s);
+	while (len && ft_strchr(set, s[len]))
+		len--;
+	d = ft_substr((char *)s, 0, len + 1);
+	return (d);
 }

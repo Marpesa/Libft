@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:40:05 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/29 11:24:16 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/01 08:27:00 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*d;
 
 	i = 0;
@@ -40,15 +40,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	d[i] = '\0';
 	return (d);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char const	*s1 = "cochon";
-	char const	*s2 = "-dinde";
-
-	printf("%s", ft_strjoin (s1, s2));
-	return (0);
 }
