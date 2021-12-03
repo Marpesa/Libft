@@ -6,25 +6,15 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:19:11 by lmery             #+#    #+#             */
-/*   Updated: 2021/11/25 17:01:00 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/03 11:15:49 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strnlen(char *str, size_t s)
 {
-	int	a;
-
-	a = 0;
-	while (str[a])
-		a++;
-	return (a);
-}
-
-int	ft_strnlen(char *str, int s)
-{
-	int	b;
+	size_t	b;
 
 	b = 0;
 	while (str[b] && b < s)
@@ -32,10 +22,10 @@ int	ft_strnlen(char *str, int s)
 	return (b);
 }
 
-int	ft_strlcat(char *dest, char *src, int size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = ft_strnlen(dest, size);

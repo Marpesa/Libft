@@ -6,16 +6,16 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 09:53:36 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/01 11:08:16 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/03 12:21:46 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int i, int len)
+char	*ft_substr(char const *s, unsigned int i, size_t len)
 {
-	int		j;
+	size_t		j;
 	char	*d;
 
 	j = 0;
@@ -23,7 +23,10 @@ char	*ft_substr(char const *s, unsigned int i, int len)
 		return (0);
 	if ((unsigned int)ft_strlen((char *)s) < i)
 		return (ft_strdup(""));
-	d = (char *)malloc(sizeof(char) * (len + 1));
+	if (len > ft_strlen(s) - i)
+		len = ft_strlen(s) - i;
+	if (len <= (size_t)ft_strlen(s))
+		d = (char *)malloc(sizeof(char) * (len + 1));
 	if (d == 0)
 		return (0);
 	while (s[i] && j < len)
