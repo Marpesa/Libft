@@ -6,7 +6,7 @@
 #    By: lmery <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:17:55 by lmery             #+#    #+#              #
-#    Updated: 2021/12/01 09:38:41 by lmery            ###   ########.fr        #
+#    Updated: 2021/12/03 16:50:17 by lmery            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,13 @@ FILES =	ft_isalpha \
 	ft_strtrim \
 	ft_split \
 	ft_itoa \
+	ft_strmapi \
+	ft_striteri \
+	ft_putchar_fd \
+	ft_putstr_fd \
+	ft_putendl_fd \
+	ft_putnbr_fd \
+
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

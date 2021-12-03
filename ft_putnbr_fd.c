@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 10:23:06 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/03 17:40:47 by lmery            ###   ########.fr       */
+/*   Created: 2021/12/03 16:49:20 by lmery             #+#    #+#             */
+/*   Updated: 2021/12/03 17:12:35 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_strnstr(const char *s, const char *w, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
-	char	*a;
-
-	i = 0;
-	a = (char *)s;
-	len = ft_strlen(w);
-	if (len == 0 || s == w)
-		return (a);
-	while (a[i] && i < n)
+	if (n == -2147483648)
 	{
-		j = 0;
-		while (a[i + j] && w[j] && a[i + j] == w[j] && i + j < n)
-			j++;
-		if (j == len)
-			return ((char *)&a[i]);
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (0);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = n * -1;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd((n % 10) + '0', fd);
 }

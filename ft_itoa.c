@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:43:42 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/03 15:09:35 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:18:17 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ char	*ft_write_num(char *r, long int n, long int i)
 
 char	*ft_itoa(int n)
 {
-	int		i;
-	char	*r;
+	int			i;
+	char		*r;
 	long int	num;
 
 	num = (long int)n;
