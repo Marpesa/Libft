@@ -6,7 +6,7 @@
 #    By: lmery <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:17:55 by lmery             #+#    #+#              #
-#    Updated: 2021/12/03 16:50:17 by lmery            ###   ########.fr        #
+#    Updated: 2021/12/03 18:21:52 by lmery            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ FILES =	ft_isalpha \
 	ft_putstr_fd \
 	ft_putendl_fd \
 	ft_putnbr_fd \
+
+FILES_B	= ft_lstnew \
 
 
 SRCS_DIR = ./
