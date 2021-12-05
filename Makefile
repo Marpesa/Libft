@@ -6,8 +6,36 @@
 #    By: lmery <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:17:55 by lmery             #+#    #+#              #
-#    Updated: 2021/12/03 18:21:52 by lmery            ###   ########.fr        #
+#    Updated: 2021/12/05 18:17:30 by lmery            ###   ########.fr        #
 #                                                                              #
+# **************************************************************************** #
+
+# This is a minimal set of ANSI/VT100 color codes
+_END		=	\e[0m
+_BOLD		=	\e[1m
+_UNDER		=	\e[4m
+_REV		=	\e[7m
+
+# Colors
+_GREY		=	\e[30m
+_RED		=	\e[31m
+_GREEN		=	\e[32m
+_YELLOW		=	\e[33m
+_BLUE		=	\e[34m
+_PURPLE		=	\e[35m
+_CYAN		=	\e[36m
+_WHITE		=	\e[37m
+
+# Inverted, i.e. colored backgrounds
+_IGREY		=	\e[40m
+_IRED		=	\e[41m
+_IGREEN		=	\e[42m
+_IYELLOW	=	\e[43m
+_IBLUE		=	\e[44m
+_IPURPLE	=	\e[45m
+_ICYAN		=	\e[46m
+_IWHITE		=	\e[47m
+
 # **************************************************************************** #
 
 NAME = libft.a
@@ -18,7 +46,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rc
 
-RM = rm -f
+RM = rm -rf
 
 FILES =	ft_isalpha \
 	ft_memset \
@@ -56,6 +84,13 @@ FILES =	ft_isalpha \
 	ft_putnbr_fd \
 
 FILES_B	= ft_lstnew \
+	ft_lstadd_front \
+	ft_lstsize \
+	ft_lstlast \
+	ft_lstadd_back \
+	ft_lstdelone \
+	ft_lstclear \
+	ft_lstiter \
 
 
 SRCS_DIR = ./
@@ -72,14 +107,17 @@ OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
+	@printf "\033[2K\r$(_GREEN) Wsh maggle, all files compiledminto '$(OBJS_DIR)'. $(_END)✅\n"
 
 bonus: $(OBJS_B)
-	$(AR) $(NAME) $^
+	$(AR) $(NAME) $(OBJS_B)
+	@printf "$(_YELLOW) Bonus Done ! $(_END)\n"
 
 all: $(NAME)
 
 clean: 
 	$(RM) $(OBJS) $(OBJS_B)
+	@printf "$(_RED) '"$(OBJS_DIR)"' has been deleted. $(_END)\n"
 
 fclean: clean
 	$(RM) $(NAME)
