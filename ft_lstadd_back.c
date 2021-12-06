@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 14:55:34 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/05 18:22:16 by lmery            ###   ########.fr       */
+/*   Created: 2021/12/06 11:32:59 by lmery             #+#    #+#             */
+/*   Updated: 2021/12/06 11:33:18 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void ft_lstadd_back(t_list **alst, t_list *new)
 {
+	t_list	*temp;
+
 	if (!*alst)
 	{
 		*alst = new;
@@ -21,7 +23,8 @@ void ft_lstadd_back(t_list **alst, t_list *new)
 	}
 	if (!new)
 		return ;
-	while ((*alst)->next != NULL)
-		*alst = (*alst)->next;
-	(*alst)->next = new;
+	while (*alst->next != NULL)
+		*alst = *alst->next;
+	temp = *alst;
+	temp->next = new;
 }
