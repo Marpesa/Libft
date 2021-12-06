@@ -6,7 +6,7 @@
 #    By: lmery <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:17:55 by lmery             #+#    #+#              #
-#    Updated: 2021/12/06 11:25:31 by lmery            ###   ########.fr        #
+#    Updated: 2021/12/06 17:39:12 by lmery            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,6 @@ FILES_B	= ft_lstnew \
 	ft_lstiter \
 	ft_lstmap \
 
-
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
@@ -107,7 +106,7 @@ OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
-	@printf "\033[2K\r$(_GREEN) Wsh maggle, all files compiledminto '$(OBJS_DIR)'. $(_END)✅\n"
+	@printf "\033[2K\r$(_GREEN) Yep, all files compiledm in here. $(_END)✅\n"
 
 bonus: $(OBJS_B)
 	$(AR) $(NAME) $(OBJS_B)
@@ -117,7 +116,7 @@ all: $(NAME)
 
 clean: 
 	$(RM) $(OBJS) $(OBJS_B)
-	@printf "$(_RED) '"$(OBJS_DIR)"' has been deleted. $(_END)\n"
+	@printf "$(_RED) All the .o files has been deleted. $(_END)\n"
 
 fclean: clean
 	$(RM) $(NAME)

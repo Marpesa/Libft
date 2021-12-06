@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:55:27 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/05 17:00:30 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/06 17:41:13 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	while (lst)
 	{
 		f(lst->content);
-		lst=lst->next;
+		lst = lst->next;
 	}
 }

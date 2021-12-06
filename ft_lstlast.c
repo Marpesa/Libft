@@ -6,7 +6,7 @@
 /*   By: lmery <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 15:51:42 by lmery             #+#    #+#             */
-/*   Updated: 2021/12/05 16:11:56 by lmery            ###   ########.fr       */
+/*   Updated: 2021/12/06 17:41:27 by lmery            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ t_list	*ft_lstlast(t_list *lst)
 		return (NULL);
 	while (lst->next != NULL)
 		lst = lst->next;
-	return(lst);
+	return (lst);
 }
